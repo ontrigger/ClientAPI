@@ -17,6 +17,7 @@
 package clientapi.command.executor;
 
 import clientapi.command.Command;
+import clientapi.command.ICommand;
 import clientapi.command.exception.CommandException;
 
 /**
@@ -31,7 +32,7 @@ public interface CommandExecutor {
     /**
      * Default executor that directly executes all commands passed to it.
      */
-    CommandExecutor DIRECT = Command::execute;
+    CommandExecutor DIRECT = ICommand::execute;
 
-    void execute(Command command, ExecutionContext sender, String[] arguments) throws CommandException;
+    void execute(ICommand command, ExecutionContext sender, String[] arguments) throws CommandException;
 }

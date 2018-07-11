@@ -17,6 +17,7 @@
 package clientapi.event.defaults.internal;
 
 import clientapi.command.Command;
+import clientapi.command.ICommand;
 import clientapi.command.executor.ExecutionContext;
 
 /**
@@ -28,7 +29,7 @@ public final class CommandExecutionEvent {
     /**
      * The command being executed
      */
-    private final Command command;
+    private final ICommand command;
 
     /**
      * Context behind the command's execution
@@ -40,13 +41,13 @@ public final class CommandExecutionEvent {
      */
     private final String[] arguments;
 
-    public CommandExecutionEvent(Command command, ExecutionContext context, String[] arguments) {
+    public CommandExecutionEvent(ICommand command, ExecutionContext context, String[] arguments) {
         this.command = command;
         this.context = context;
         this.arguments = arguments;
     }
 
-    public final Command getCommand() {
+    public final ICommand getCommand() {
         return this.command;
     }
 

@@ -19,6 +19,7 @@ package clientapi.command.handler;
 import clientapi.ClientAPI;
 import clientapi.command.Cmd;
 import clientapi.command.Command;
+import clientapi.command.ICommand;
 import clientapi.command.exception.CommandException;
 import clientapi.command.exception.UnknownCommandException;
 import clientapi.command.exception.handler.ExceptionHandler;
@@ -71,7 +72,7 @@ public final class CommandHandler implements Helper {
      * Command manager using this handler. Used to access
      * the list of commands that the client provides.
      */
-    private final Manager<Command> commandManager;
+    private final Manager<ICommand> commandManager;
 
     /**
      * Prefix used to indicate command input. By default, it is set to "."
@@ -83,7 +84,7 @@ public final class CommandHandler implements Helper {
      */
     private boolean openChat = false;
 
-    public CommandHandler(Manager<Command> commandManager) {
+    public CommandHandler(Manager<ICommand> commandManager) {
         this.commandManager = commandManager;
         ClientAPI.EVENT_BUS.subscribe(this);
     }
@@ -166,7 +167,7 @@ public final class CommandHandler implements Helper {
     /**
      * @return The client that is using this handler
      */
-    public final Manager<Command> getCommandManager() {
+    public final Manager<ICommand> getCommandManager() {
         return this.commandManager;
     }
 

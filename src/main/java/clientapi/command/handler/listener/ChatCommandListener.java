@@ -18,6 +18,7 @@ package clientapi.command.handler.listener;
 
 import clientapi.ClientAPI;
 import clientapi.command.Command;
+import clientapi.command.ICommand;
 import clientapi.command.executor.parser.CommandInputParser;
 import clientapi.command.executor.parser.ParsedCommandInput;
 import clientapi.command.executor.ExecutionContext;
@@ -76,7 +77,7 @@ public final class ChatCommandListener extends CommandListener implements Helper
             // Execute the command if the input was valid
             if (input.isPresent()) {
                 // Find a command that has a header matching the input command header
-                Command command = handler.getCommandManager().stream()
+                ICommand command = handler.getCommandManager().stream()
                         .filter(cmd -> ClientAPIUtils.containsIgnoreCase(cmd.getHeaders(), input.get().getCommand()))
                         .findFirst().orElse(null);
 
